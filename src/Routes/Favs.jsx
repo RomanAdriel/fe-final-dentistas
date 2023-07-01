@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Card from "../Components/Card";
 import { useDentistsContext } from "../Components/utils/global.context";
 
