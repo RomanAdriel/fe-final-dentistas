@@ -108,7 +108,7 @@ form{
 }
 
 .card:hover{
-  border: 0.5px solid rgb(206, 217, 142);
+  border: 0.5px solid rgb(217, 178, 142);
 }
 
 .card-grid{
@@ -151,4 +151,17 @@ tr:nth-child(even) {
 
 h1, h2, h4, p {
   text-align: center;
+}
+
+.navbar-dark {
+
+  background-color: #181616c8;
+  color: white;
+
+}
+
+.navbar-dark label, .navbar-dark li {
+
+  color: white;
+
 }

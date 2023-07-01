@@ -10,7 +10,7 @@ const Navbar = () => {
   const { dentistState, dentistDispatch } = useDentistsContext();
 
   return (
-    <nav className={dentistState.theme == 'dark' ? "dark" : ""}>
+    <nav className={dentistState.theme == 'dark' ? "navbar-dark" : ""}>
       <ul>
         <Link to={routes.home}><li>Home</li></Link>
         <Link to={routes.contact}><li>Contact</li></Link>
