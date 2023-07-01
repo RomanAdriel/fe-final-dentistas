@@ -1,7 +1,7 @@
 import { Button, TextField } from "@mui/material";
 import React, { useState } from "react";
 import { useDentistsContext } from "./utils/global.context";
-import { brown } from "@mui/material/colors";
+import { muiStyles } from '../mui-styles';
 
 
 const Form = () => {
@@ -41,12 +41,12 @@ const handleSubmit = (e) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-          <TextField onChange={(e) => updateInputs(e)} label="Full Name" type="text" name="fullName" placeholder="Enter your full name..."/>
-          <TextField onChange={(e) =>  updateInputs(e)} label="Email" type="text" name="email" placeholder="Enter your email..."/>
-        <Button sx={{margin: "1rem", backgroundColor: dentistState.theme == 'dark' ? brown[700] : brown[200], color: dentistState.theme == 'dark' ? "white" : "black" }} type="submit">Send</Button>
+          <TextField sx={dentistState.theme == 'dark' ? muiStyles.dark.input : muiStyles.light.input } onChange={(e) => updateInputs(e)} label="Full Name" type="text" name="fullName" placeholder="Enter your full name..."/>
+          <TextField sx={dentistState.theme == 'dark' ? muiStyles.dark.input : muiStyles.light.input } onChange={(e) =>  updateInputs(e)} label="Email" type="text" name="email" placeholder="Enter your email..."/>
+        <Button sx={dentistState.theme == 'dark' ? muiStyles.dark.button : muiStyles.light.button} type="submit">Send</Button>
       </form>
       {showInfo && <p>{`Thanks ${contact.fullName}, we'll contact you via email as soon as possible.`}</p>}
-      {showError && <p>Please, verify your information and try again.</p>}
+      {showError && <p style={{color: "red"}}>Please, verify your information and try again.</p>}
     </div>
   );
 };

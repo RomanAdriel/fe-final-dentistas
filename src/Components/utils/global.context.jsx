@@ -5,7 +5,7 @@ import {createContext, useContext, useEffect, useReducer} from "react";
 const DentistsStates = createContext();
 
 export const initialDentistState = {
-    theme: "dark",
+    theme: localStorage.getItem('theme') || "light",
     dentists: [],
     singleDentist: {},
     favorites: JSON.parse(localStorage.getItem('favorites')) || []
@@ -67,6 +67,10 @@ const DentistContext = ({children}) => {
       }
 
   }, [dentistState.favorites])
+
+  useEffect(() => {
+    localStorage.setItem('theme', dentistState.theme)
+  }, [dentistState.theme])
 
     return (
         <DentistsStates.Provider value={{dentistState, dentistDispatch}}>

@@ -5,8 +5,9 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Button } from "@mui/material";
 import StarBorderIcon from '@mui/icons-material/StarBorder';
-import { brown, yellow } from "@mui/material/colors";
+import { yellow } from "@mui/material/colors";
 import StarIcon from '@mui/icons-material/Star';
+import { muiStyles } from '../mui-styles';
 
 
 const Card = ({ name, username, id }) => {
@@ -45,17 +46,13 @@ const Card = ({ name, username, id }) => {
 
   return (
     <div className={dentistState.theme == "dark" ? "card card-dark" : "card"}>
-        {/* En cada card deberan mostrar en name - username y el id */}
         <Link to={`/dentist/${id}`}>
           <img style={{ width: "200px" }} src="./images/doctor.jpg" alt="doctor" />
           <h4>{name}</h4>
           <p>{username}</p>
         </Link>
 
-        {/* No debes olvidar que la Card a su vez servira como Link hacia la pagina de detalle */}
-
-        {/* Ademas deberan integrar la logica para guardar cada Card en el localStorage */}
-        <Button sx={{ marginBottom: "1rem", backgroundColor: dentistState.theme == 'dark' ? brown[700] : brown[200] }} onClick={isFavorite ? removeFav : addFav} className="favButton">
+        <Button sx={dentistState.theme == 'dark' ? muiStyles.dark.button : muiStyles.light.button} onClick={isFavorite ? removeFav : addFav} className="favButton">
         {isFavorite ?
         <StarIcon sx={{ color: yellow[300] }}></StarIcon>
           :
