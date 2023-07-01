@@ -37,6 +37,11 @@ const dentistsReducer = (state, action) => {
                 ...state,
                 favorites: state.favorites.filter(fav => fav.id != action.payload.id)
             }
+        case 'CLEAN_FAVORITES':
+            return {
+                ...state,
+                favorites: []
+            }
           case 'CHANGE_THEME':
             return {
               ...state,

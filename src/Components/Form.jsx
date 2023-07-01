@@ -32,6 +32,7 @@ const handleSubmit = (e) => {
     if(contact.fullName.length > 5 && contact.email.match(emailValidation)) {
       setShowInfo(true);
       setShowError(false);
+      console.log(contact);
     } else {
       setShowInfo(false);
       setShowError(true)
