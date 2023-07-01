@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import { useDentistsContext } from "./utils/global.context";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Button } from "@mui/material";
+import StarBorderIcon from '@mui/icons-material/StarBorder';
+import { brown, yellow } from "@mui/material/colors";
+import StarIcon from '@mui/icons-material/Star';
 
 
 const Card = ({ name, username, id }) => {
@@ -24,19 +28,23 @@ const Card = ({ name, username, id }) => {
     // Aqui iria la logica para agregar la Card en el localStorage
 
     dentistDispatch({type: 'ADD_FAVORITE', payload: {id: id, name: name, username: username}})
-    toast("Added to favorites")
+    toast.success("Added to favorites", {
+      theme: dentistState.theme == "dark" ? "dark" : "light"
+    })
     setIsFavorite(true);
 
   }
 
   const removeFav = () => {
     dentistDispatch({type: 'REMOVE_FAVORITE', payload: {id: id}})
-    toast("Removed from favorites")
+    toast.success("Removed from favorites", {
+      theme: dentistState.theme == "dark" ? "dark" : "light"
+    })
     setIsFavorite(false);
   }
 
   return (
-    <div className="card">
+    <div className={dentistState.theme == "dark" ? "card card-dark" : "card"}>
         {/* En cada card deberan mostrar en name - username y el id */}
         <Link to={`/dentist/${id}`}>
           <img style={{ width: "200px" }} src="./images/doctor.jpg" alt="doctor" />
@@ -47,7 +55,12 @@ const Card = ({ name, username, id }) => {
         {/* No debes olvidar que la Card a su vez servira como Link hacia la pagina de detalle */}
 
         {/* Ademas deberan integrar la logica para guardar cada Card en el localStorage */}
-        <button onClick={isFavorite ? removeFav : addFav} className="favButton">{isFavorite ? "Remove fav" : "Add fav"}</button>
+        <Button sx={{ marginBottom: "1rem", backgroundColor: dentistState.theme == 'dark' ? brown[700] : brown[200] }} onClick={isFavorite ? removeFav : addFav} className="favButton">
+        {isFavorite ?
+        <StarIcon sx={{ color: yellow[300] }}></StarIcon>
+          :
+          <StarBorderIcon sx={{ color: yellow[300] }}></StarBorderIcon>}
+        </Button>
     </div>
   );
 };

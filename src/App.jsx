@@ -20,8 +20,8 @@ function App() {
           <Route path={routes.favorites} element={<Favs/>}/>
           <Route path={routes.contact} element={<Contact/>}/>
       </Routes>
-      <ToastContainer/>
       <Footer/>
+      <ToastContainer autoClose={2000}/>
     </>
 
   );

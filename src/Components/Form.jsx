@@ -1,7 +1,12 @@
+import { Button, TextField } from "@mui/material";
 import React, { useState } from "react";
+import { useDentistsContext } from "./utils/global.context";
+import { brown } from "@mui/material/colors";
 
 
 const Form = () => {
+
+  const { dentistState } = useDentistsContext();
 
   const emailValidation = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
@@ -36,14 +41,12 @@ const handleSubmit = (e) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label>Full Name</label>
-        <input onChange={(e) => updateInputs(e)} type="text" name="fullName" placeholder="Enter your full name..."/>
-        <label>Email</label>
-        <input onChange={(e) =>  updateInputs(e)} type="text" name="email" placeholder="Enter your email..."/>
-        <button type="submit">Send</button>
+          <TextField onChange={(e) => updateInputs(e)} label="Full Name" type="text" name="fullName" placeholder="Enter your full name..."/>
+          <TextField onChange={(e) =>  updateInputs(e)} label="Email" type="text" name="email" placeholder="Enter your email..."/>
+        <Button sx={{margin: "1rem", backgroundColor: dentistState.theme == 'dark' ? brown[700] : brown[200], color: dentistState.theme == 'dark' ? "white" : "black" }} type="submit">Send</Button>
       </form>
-      {showInfo && <span>{`Thanks ${contact.fullName}, we'll contact you via email as soon as possible.`}</span>}
-      {showError && <span>Please, verify your information and try again.</span>}
+      {showInfo && <p>{`Thanks ${contact.fullName}, we'll contact you via email as soon as possible.`}</p>}
+      {showError && <p>Please, verify your information and try again.</p>}
     </div>
   );
 };

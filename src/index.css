@@ -19,24 +19,30 @@ code {
   cursor: pointer;
 }
 
-h1{
-  text-align: center;
+main {
+  padding: 1.5rem
 }
 
 nav{
   display: flex;
-  width: 80vw;
-  justify-content: flex-start;
-  padding: 1rem;
+  padding: 1.5rem;
   justify-content: end;
   background-color: #ccc;
   margin: 0 auto;
+  align-items: center;
 }
 
 nav ul {
   display: flex;
   list-style: none;
+}
 
+ul li {
+  padding: 0rem 1.5rem
+}
+
+.MuiBtn {
+  margin: 1rem;
 }
 
 a{
@@ -76,7 +82,7 @@ form{
   justify-content: space-around;
   width: 300px;
   height: 100px;
-  margin: 0 auto;
+  margin: 50px auto;
 }
 
 .card{
@@ -87,6 +93,11 @@ form{
   width: 200px;
   padding: 0.5rem 0.5rem 0 0.5rem;
   border: 0.5px solid rgb(136, 136, 136);
+  background-color:  #fecea8;
+}
+
+.card-dark {
+  background-color:  #ff6f3c;
 }
 
 .card:hover{
@@ -127,6 +138,10 @@ tr:nth-child(even) {
   background-color: #12121296;
   color: white;
 }
-.dark > a {
+.dark > a, .dark li {
   color: white;
+}
+
+h1, h2, h4, p {
+  text-align: center;
 }

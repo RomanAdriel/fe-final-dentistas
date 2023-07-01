@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { routes } from '../Routes/utils/routes'
 import { useDentistsContext } from './utils/global.context';
+import ToggleOnIcon from '@mui/icons-material/ToggleOn';
+import ToggleOffIcon from '@mui/icons-material/ToggleOff';
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
@@ -18,7 +20,9 @@ const Navbar = () => {
         <Link to={routes.contact}><li>Contact</li></Link>
         <Link to={routes.favorites}><li>Favorites</li></Link>
       </ul>
-      <button onClick={() => dentistDispatch({type: 'CHANGE_THEME', payload: dentistState.theme == 'dark' ? 'light' : 'dark'})}>Change theme</button>
+      <label>Dark Mode</label>
+      {dentistState.theme == 'light' && <ToggleOffIcon style={{ padding: "0rem 1.5rem"}} onClick={() => dentistDispatch({type: 'CHANGE_THEME', payload: 'dark'})}></ToggleOffIcon>}
+      {dentistState.theme == 'dark' && <ToggleOnIcon style={{ padding: "0rem 1.5rem"}} onClick={() => dentistDispatch({type: 'CHANGE_THEME', payload: 'light'})}></ToggleOnIcon>}
     </nav>
   )
 }

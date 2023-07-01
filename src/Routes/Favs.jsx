@@ -9,7 +9,7 @@ const Favs = () => {
   const { dentistState } = useDentistsContext();
 
   return (
-    <div className={dentistState.theme == 'dark' ? "dark" : ""}>
+    <div className={dentistState.theme == 'dark' ? "dark" : ""} style={{padding: "1.5rem"}}>
       <h1>Dentists Favorites</h1>
       <div className="card-grid">
         {/* este componente debe consumir los destacados del localStorage */}
